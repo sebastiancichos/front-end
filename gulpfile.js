@@ -6,7 +6,8 @@ var gulp        = require('gulp'),
     path        = require('path'),
     ts          = require('gulp-typescript'),
     sass        = require('gulp-sass'),
-    sourcemaps  = require('gulp-sourcemaps');
+    sourcemaps  = require('gulp-sourcemaps'),
+    googleWebFonts        = require('gulp-google-webfonts');
 
 var paths = {
     nunjucks: {
@@ -29,7 +30,11 @@ var paths = {
     images: {
         src: ['src/images/**/*', '!src/images/**/*.svg'],
         built: 'built/assets/images'
-    } 
+    },
+    fonts: {
+        src: 'src/fonts/fonts.list',
+        built: 'built/assets/fonts',
+    }
 };
 
 gulp.task('default', ['compile', 'watch', 'serve']);
@@ -79,4 +84,10 @@ gulp.task('typescript', function () {
             out: 'main.js'
         }))
         .pipe(gulp.dest(paths.typescripts.built));
+});
+
+gulp.task('fonts', function () {
+    return gulp.src(paths.fonts.src)
+		.pipe(googleWebFonts ({}))
+		.pipe(gulp.dest(paths.fonts.built));
 });
