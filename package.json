@@ -9,7 +9,9 @@
   "author": "",
   "license": "ISC",
   "dependencies": {
+    "bootstrap": "^4.0.0-alpha.3",
     "gulp": "^3.9.1",
+    "gulp-nunjucks-render": "^2.0.0",
     "gulp-sass": "^2.3.2",
     "gulp-typescript": "^2.13.6"
   }
