@@ -1,6 +1,8 @@
 var gulp        = require('gulp'),
     browserSync = require('browser-sync').create(),
-    nunjucks    = require('gulp-nunjucks-render')
+    nunjucks    = require('gulp-nunjucks-render'),
+    data        = require('gulp-data'),
+    path        = require('path'),
     ts          = require('gulp-typescript'),
     sass        = require('gulp-sass'),
     sourcemaps  = require('gulp-sourcemaps');
@@ -10,6 +12,7 @@ var paths = {
         src: ['src/nunjucks/pages/**/*.+(html|nunjucks)'],
         built: 'built',
         watch: 'src/nunjucks/**/*.+(html|nunjucks)',
+        data: './src/nunjucks/data/',
         partials: 'src/nunjucks/partials'
     },
     typescripts: {
@@ -23,7 +26,8 @@ var paths = {
         watch: ''
     },    
     images: {
-        src: ['src/images/**/*', '!src/images/**/*.svg']
+        src: ['src/images/**/*', '!src/images/**/*.svg'],
+        built: 'built/assets/images'
     } 
 };
 
@@ -43,8 +47,11 @@ gulp.task('watch', function() {
     gulp.watch(paths.typescripts.watch, ['typescript', browserSync.reload]);
 });
 
-gulp.task('nunjucks', function() {
+gulp.task('nunjucks', function() { // http://zellwk.com/blog/nunjucks-with-gulp/
     return gulp.src(paths.nunjucks.src)
+        .pipe(data(function(file) {
+            return require(paths.nunjucks.data+path.basename(file.path, '.nunjucks')+'.json')
+        }))
         .pipe(nunjucks({
             path: paths.nunjucks.partials
         }))
