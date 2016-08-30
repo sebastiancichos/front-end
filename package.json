@@ -13,6 +13,11 @@
     "gulp": "^3.9.1",
     "gulp-nunjucks-render": "^2.0.0",
     "gulp-sass": "^2.3.2",
+    "gulp-sourcemaps": "^1.6.0",
     "gulp-typescript": "^2.13.6"
+  },
+  "devDependencies": {
+    "browser-sync": "^2.14.1",
+    "gulp": "^3.9.1"
   }
 }

@@ -1,7 +1,9 @@
-var gulp     = require('gulp'),
-    ts       = require('gulp-typescript'),
-    sass     = require('gulp-sass'),
-    nunjucks = require('gulp-nunjucks-render');
+var gulp        = require('gulp'),
+    browserSync = require('browser-sync').create(),
+    nunjucks    = require('gulp-nunjucks-render')
+    ts          = require('gulp-typescript'),
+    sass        = require('gulp-sass'),
+    sourcemaps  = require('gulp-sourcemaps');
 
 var paths = {
     nunjucks: {
@@ -25,14 +27,20 @@ var paths = {
     } 
 };
 
-gulp.task('default', ['compile', 'watch']);
+gulp.task('default', ['compile', 'watch', 'serve']);
 
 gulp.task('compile', ['nunjucks', 'sass', 'typescript']);
 
+gulp.task('serve', function () {
+    browserSync.init({
+        server: paths.nunjucks.built
+    });
+});
+
 gulp.task('watch', function() {
-    gulp.watch(paths.nunjucks.watch, ['nunjucks']);
-    gulp.watch(paths.sass.watch, ['sass']);
-    gulp.watch(paths.typescripts.watch, ['typescript']);
+    gulp.watch(paths.nunjucks.watch, ['nunjucks', browserSync.reload]);
+    gulp.watch(paths.sass.watch, ['sass', browserSync.reload]);
+    gulp.watch(paths.typescripts.watch, ['typescript', browserSync.reload]);
 });
 
 gulp.task('nunjucks', function() {
@@ -45,8 +53,11 @@ gulp.task('nunjucks', function() {
 
 gulp.task('sass', function () {
     return gulp.src(paths.sass.src)
-        .pipe(sass().on('error', sass.logError))
-        .pipe(gulp.dest(paths.sass.built));
+        .pipe(sourcemaps.init())
+        .pipe(sass({outputStyle: 'compressed'}).on('error', sass.logError))
+        .pipe(sourcemaps.write('.'))
+        .pipe(gulp.dest(paths.sass.built))
+        .pipe(browserSync.stream());
 });
 
 gulp.task('typescript', function () {
