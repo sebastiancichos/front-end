@@ -2,6 +2,7 @@ var gulp        = require('gulp'),
     browserSync = require('browser-sync').create(),
     nunjucks    = require('gulp-nunjucks-render'),
     data        = require('gulp-data'),
+    prettify    = require('gulp-prettify'),
     path        = require('path'),
     ts          = require('gulp-typescript'),
     sass        = require('gulp-sass'),
@@ -54,6 +55,10 @@ gulp.task('nunjucks', function() { // http://zellwk.com/blog/nunjucks-with-gulp/
         }))
         .pipe(nunjucks({
             path: paths.nunjucks.partials
+        }))
+        .pipe(prettify({
+            indent_size: 4,
+            unformatted: ['pre', 'code']
         }))
         .pipe(gulp.dest(paths.nunjucks.built))
 });
