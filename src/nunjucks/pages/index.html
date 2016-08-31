@@ -1,0 +1,37 @@
+{% extends "base.nunjucks" %}
+
+{% block content %}
+
+<section id="top-left-section">
+    <header>
+        <nav>
+            <ul>
+                <li><a href=""></a></li>
+                <li></li>
+            </ul>
+        </nav>
+    </header>
+    <aside>
+        <div class="logo">
+            <a href="#"><img src="assets/images" alt="{{title}}"></a>
+        </div>
+    </aside>
+</section>
+<section id="bottom-right-section">
+    <main>
+        <article>
+            <h3></h3>
+            <hr>
+            <p></p>
+        </article>
+    </main>
+    <footer>
+
+    </footer>
+</section>
+
+{% endblock %}
+
+{#{% include "header.nunjucks" %}
+{% import 'macros/nav.nunjucks' as nav %}
+{{ nav.active('home') }}#}

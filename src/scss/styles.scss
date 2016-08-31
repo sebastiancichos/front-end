@@ -1,7 +1,4 @@
-
-
-
-@import "./../../node_modules/bootstrap/scss/bootstrap";
-@import "./../fonts/fonts.css";
-
-@import "styles/index";
+@import "./../fonts/fonts.css";  
+@import "frameworks/bootstrap/variables";
+@import "../../node_modules/bootstrap/scss/bootstrap";
+@import "partials/index";

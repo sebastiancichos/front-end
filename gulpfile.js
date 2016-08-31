@@ -23,7 +23,7 @@ var paths = {
         watch: 'src/typescript/**/*.ts'
     },
     sass: {
-        src: ['src/scss/**/*.scss', '!src/scss/**/_*.scss'],
+        src: ['src/scss/*.scss', '!src/scss/**/_*.scss'],
         built: 'built/assets/css',
         watch: 'src/scss/**/*.scss'
     },    
@@ -56,7 +56,7 @@ gulp.task('watch', function() {
 gulp.task('nunjucks', function() { // http://zellwk.com/blog/nunjucks-with-gulp/
     return gulp.src(paths.nunjucks.src)
         .pipe(data(function(file) {
-            return require(paths.nunjucks.data+path.basename(file.path, '.nunjucks')+'.json')
+            return require(paths.nunjucks.data+path.basename(file.path, '.html')+'.json')
         }))
         .pipe(nunjucks({
             path: paths.nunjucks.partials
