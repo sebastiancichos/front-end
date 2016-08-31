@@ -1,8 +1,32 @@
 {% extends "base.nunjucks" %}
 
 {% block content %}
-<h1>TEST</h1>
-{% include "header.nunjucks" %}
-{% import 'macros/nav.nunjucks' as nav %}
-{{ nav.active('home') }}
+
+<section id="top-left-section">
+    <header>
+        <nav>
+            <ul>
+                <li></li>
+                <li></li>
+            </ul>
+        </nav>
+    </header>
+</section>
+<section id="bottom-right-section">
+    <main>
+        <article>
+            <h3></h3>
+            <hr>
+            <p></p>
+        </article>
+    </main>
+    <footer>
+
+    </footer>
+</section>
+
 {% endblock %}
+
+{#{% include "header.nunjucks" %}
+{% import 'macros/nav.nunjucks' as nav %}
+{{ nav.active('home') }}#}

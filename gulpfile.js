@@ -25,7 +25,7 @@ var paths = {
     sass: {
         src: ['src/scss/**/*.scss', '!src/scss/**/_*.scss'],
         built: 'built/assets/css',
-        watch: ''
+        watch: 'src/scss/**/*.scss'
     },    
     images: {
         src: ['src/images/**/*', '!src/images/**/*.svg'],
