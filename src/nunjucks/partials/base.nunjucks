@@ -1,10 +1,57 @@
-<!DOCTYPE html>
+<!doctype html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <title>{{ title }}</title>
-    <link rel="stylesheet" href="assets/css/styles.css">
-    <script src="assets/js/main.js"></script>
+    <meta charset="utf-8">
+    <title>SEBA.space {{ title }}</title>
+
+    <meta name="viewport" content="width=device-width initial-scale=1" />
+    <meta name="description" content="">
+
+    <link rel="stylesheet" href="//maxcdn.bootstrapcdn.com/font-awesome/4.3.0/css/font-awesome.min.css">
+    <link rel="stylesheet" href="/assets/css/styles.css">
+    <link rel="icon" href="/assets/icons/icon.png">
+
+    <link rel="canonical" href="https://seba.space/" />
+    <meta name="referrer" content="no-referrer-when-downgrade" />
+    <link rel="next" href="https://seba.space/page/2/" />
+    
+    <meta property="og:site_name" content="SEBA.space {{ title }}" />
+    <meta property="og:type" content="website" />
+    <meta property="og:title" content="SEBA.space {{ title }}" />
+    <meta property="og:description" content="" />
+    <meta property="og:url" content="https://seba.space/" />
+    <meta property="og:image" content="assets/img/image.jpg" />
+    <meta name="twitter:card" content="summary_large_image" />
+    <meta name="twitter:title" content="SEBA.space {{ title }}" />
+    <meta name="twitter:description" content="" />
+    <meta name="twitter:url" content="https://seba.space/" />
+    <meta name="twitter:image" content="https://seba.space/assets/img/image.jpg" />
+    <meta property="og:image:width" content="778" />
+    <meta property="og:image:height" content="740" />
+    
+    <script type="application/ld+json">
+    {
+        "@context": "https://schema.org",
+        "@type": "Website",
+        "publisher": {
+            "@type": "Organization",
+            "name": "SEBA.space",
+            "logo": "https://seba.space/assets/img/image.jpg"
+        },
+        "url": "https://seba.space/",
+        "image": {
+            "@type": "ImageObject",
+            "url": "https://seba.space/assets/img/image.jpg",
+            "width": 778,
+            "height": 740
+        },
+        "mainEntityOfPage": {
+            "@type": "WebPage",
+            "@id": "https://seba.space"
+        },
+        "description": ""
+    }
+    </script>
 </head>
 <body>
 {% block content %}{% endblock %}
